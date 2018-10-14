@@ -119,7 +119,8 @@ install:
   - git submodule update --init tools/build
   - git submodule update --init libs/config
   - git submodule update --init tools/boostdep
-  - cp -r $TRAVIS_BUILD_DIR/* libs/parameter
+  - mkdir -p libs/parameter_python
+  - cp -r $TRAVIS_BUILD_DIR/* libs/parameter_python
   - python tools/boostdep/depinst/depinst.py parameter
   - ./bootstrap.sh
   - ./b2 headers
@@ -127,8 +128,7 @@ install:
 script:
   - |-
     echo "using $TOOLSET : : $COMPILER ;" > ~/user-config.jam
-  - ./b2 --verbose-test libs/config/test//config_info toolset=$TOOLSET cxxstd=$CXXSTD || true
-  - ./b2 -j3 libs/parameter/test toolset=$TOOLSET cxxstd=$CXXSTD
+  - ./b2 -j3 libs/parameter_python/test toolset=$TOOLSET cxxstd=$CXXSTD
 
 notifications:
   email:
