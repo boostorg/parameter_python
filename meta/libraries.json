@@ -1,11 +1,11 @@
 {
-    "key": "parameter",
-    "name": "Parameter",
+    "key": "parameter_python",
+    "name": "Parameter Python bindings",
     "authors": [
         "David Abrahams",
         "Daniel Wallin"
     ],
-    "description": "Boost.Parameter Library - Write functions that accept arguments by name.",
+    "description": "Boost.Parameter Library Python bindings.",
     "category": [
         "Emulation",
         "Programming"
