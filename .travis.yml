@@ -122,8 +122,6 @@ install:
   - mkdir -p libs/parameter_python
   - cp -r $TRAVIS_BUILD_DIR/* libs/parameter_python
   - python tools/boostdep/depinst/depinst.py parameter_python
-  - rm libs/parameter/include/boost/parameter/python.hpp
-  - rm -rf libs/parameter/include/boost/parameter/aux_/python
   - ./bootstrap.sh
   - ./b2 headers
 
