@@ -26,5 +26,5 @@ stage html : $(bases) ;
 ###############################################################################
 alias boostdoc ;
 explicit boostdoc ;
-alias boostrelease : htmls ;
+alias boostrelease : html ;
 explicit boostrelease ;
