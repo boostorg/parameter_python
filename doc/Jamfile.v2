@@ -8,7 +8,7 @@ import path ;
 path-constant HERE : . ;
 
 sources = [ path.glob $(HERE) : *.rst ] ;
-bases = $(sources:S=) ;
+bases = $(sources:D=:S=) ;
 
 # This is a path relative to the html/ subdirectory where the
 # generated output will eventually be moved.
