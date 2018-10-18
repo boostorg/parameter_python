@@ -41,8 +41,7 @@ namespace boost { namespace parameter { namespace python { namespace aux
   inline PyObject* unspecified_type()
   {
       static PyTypeObject unspecified = {
-          PyObject_HEAD_INIT(NULL)
-          0,                                /* ob_size        */
+          PyVarObject_HEAD_INIT(NULL,0)
           "Boost.Parameter.Unspecified",    /* tp_name        */
           PyType_Type.tp_basicsize,         /* tp_basicsize   */
           0,                                /* tp_itemsize    */
@@ -64,12 +63,24 @@ namespace boost { namespace parameter { namespace python { namespace aux
           Py_TPFLAGS_DEFAULT,               /* tp_flags       */
           0,                                /* tp_doc         */
       };
+      
+#if PY_MAJOR_VERSION <= 2
 
       if (unspecified.ob_type == 0)
       {
           unspecified.ob_type = &PyType_Type;
           PyType_Ready(&unspecified);
       }
+      
+#else
+
+      if (unspecified.ob_base.ob_base.ob_type == 0)
+      {
+          unspecified.ob_base.ob_base.ob_type = &PyType_Type;
+          PyType_Ready(&unspecified);
+      }
+      
+#endif
 
       return (PyObject*)&unspecified;
   }
