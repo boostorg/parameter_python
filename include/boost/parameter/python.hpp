@@ -64,24 +64,12 @@ namespace boost { namespace parameter { namespace python { namespace aux
           0,                                /* tp_doc         */
       };
       
-#if PY_MAJOR_VERSION <= 2
-
-      if (unspecified.ob_type == 0)
+      if (Py_TYPE(&unspecified) == 0)
       {
-          unspecified.ob_type = &PyType_Type;
+          Py_TYPE(&unspecified) = &PyType_Type;
           PyType_Ready(&unspecified);
       }
       
-#else
-
-      if (unspecified.ob_base.ob_base.ob_type == 0)
-      {
-          unspecified.ob_base.ob_base.ob_type = &PyType_Type;
-          PyType_Ready(&unspecified);
-      }
-      
-#endif
-
       return (PyObject*)&unspecified;
   }
 
