@@ -1,6 +1,6 @@
 {
     "key": "parameter_python",
-    "name": "Parameter Python bindings",
+    "name": "Parameter Python Bindings",
     "authors": [
         "David Abrahams",
         "Daniel Wallin"
