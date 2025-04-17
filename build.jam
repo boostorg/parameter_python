@@ -12,12 +12,11 @@ constant boost_dependencies :
     /boost/python//boost_python ;
 
 project /boost/parameter_python
-    : common-requirements
-        <include>include
     ;
 
 explicit
-    [ alias boost_parameter_python : : : : <library>$(boost_dependencies) ]
+    [ alias boost_parameter_python : : :
+        : <include>include <library>$(boost_dependencies) ]
     [ alias all : boost_parameter_python test ]
     ;
 
